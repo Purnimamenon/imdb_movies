@@ -1,0 +1,40 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Movie Details{% endblock %}
+
+{% block body %}
+    <h1>Movie Details</h1>
+
+    <table class="table">
+        <tr>
+            <th>Movie ID</th>
+            <td>{{ movie.movie_id }}</td>
+        </tr>
+        <tr>
+            <th>Movie Name</th>
+            <td>{{ movie.movieName }}</td>
+        </tr>
+        <tr>
+            <th>Category</th>
+            <td>{{ categoryNames[movie.movie_id]  }}</td>
+        </tr>
+
+        <tr>
+            <th>Director</th>
+          <td>{{ directorNames[movie.movie_id]  }}</td>
+        </tr>
+         
+        <tr>
+            <th>Release Date</th>
+            <td>{{ movie.releaseDate | date('Y-m-d') }}</td>
+        </tr>
+        <tr>
+            <th>Movie Image</th>
+            <td><img src="{{ asset('assets/images/kushi.jpg') }}" alt="{{ movie.movieImage }}" width="50px"></td>
+        </tr>
+        <tr>
+            <th>Movie Details</th>
+            <td>{{ movie.movieDetails }}</td>
+        </tr>
+    </table>
+{% endblock %}

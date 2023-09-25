@@ -1,0 +1,32 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Directors{% endblock %}
+
+{% block body %}
+    <h1>Directors</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Experience</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for director in directors %}
+                <tr>
+                    <td>{{ director.name }}</td>
+                    <td>{{ director.age }}</td>
+                    <td>{{ director.experience }}</td>
+                    <td>
+                        <a href="{{ path('director_edit', {'id': director.id}) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ path('director_delete', {'id': director.id}) }}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('director_create') }}" class="btn btn-primary">Create New Director</a>
+{% endblock %}

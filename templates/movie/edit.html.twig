@@ -1,0 +1,15 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Edit Movie{% endblock %}
+{% block body %}
+<div class="main">
+<div class="form">
+    <h1>Edit Movie</h1>
+<form method="post">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary">Update Movie</button>
+    {{ form_end(form) }}
+</form>
+</div>
+{% endblock %}

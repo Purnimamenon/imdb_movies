@@ -1,0 +1,85 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+index:
+    path: /
+    controller: App\Controller\RegisterController::register
+
+login:
+    path: /login
+    controller: App\Controller\RegisterController::login
+
+user_dashboard:
+    path: /user_dashboard/{userId}
+    controller: App\Controller\UserController::userdashboard
+
+
+app_category_index:
+    path: /categories
+    controller: App\Controller\CategoryController::index
+
+
+app_category_create:
+    path: /categories/create
+    controller: App\Controller\CategoryController::create
+
+
+app_category_show:
+    path: /categories/{id}
+    controller: App\Controller\CategoryController::show
+
+
+app_category_edit:
+    path: /categories/{id}/edit
+    controller: App\Controller\CategoryController::edit
+
+app_category_delete:
+    path: /categories/{id}/delete
+    controller: App\Controller\CategoryController::delete
+
+app_movie_index:
+    path: /movies
+    controller: App\Controller\MovieController::index
+
+app_movie_create:
+    path: /movies/create
+    controller: App\Controller\MovieController::create
+  
+app_movie_show:
+    path: /movies/{id}
+    controller: App\Controller\MovieController::show
+
+app_movie_edit:
+    path: /movies/{id}/edit
+    controller: App\Controller\MovieController::edit
+
+app_movie_delete:   
+    path: /movies/{id}/delete
+    controller: App\Controller\MovieController::delete
+
+add_comment_review:
+    path: /movies/add-comment-review/{movieId}
+    controller: App\Controller\MovieController::addCommentReview
+
+director_index:
+    path: /director
+    controller: App\Controller\DirectorController::index
+
+director_create:
+    path: /director/create
+    controller: App\Controller\DirectorController::create
+
+director_edit:
+    path: /director/edit/{id}
+    controller: App\Controller\DirectorController::edit
+
+director_delete:
+    path: /director/delete/{id}
+    controller: App\Controller\DirectorController::delete
+
+logout:
+    path: /logout
+    controller: App\Controller\RegisterController::logout

@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% for message in app.flashes('success') %}
+    <div class="flash-success" style="color:green;">
+        {{ message }}
+    </div>
+{% endfor %}
+<h2> WELCOME TO USER DASHBOARD....... !!! </h2> 
+{# <p>User ID: {{ userId }}</p> #}
+
+ <h1>Movies</h1>
+{% for movie in movies %}
+ <div>
+ <img src="{{ asset('assets/images/kushi.jpg') }}" alt="{{ movie.movieImage }}" width="17%">
+ <ul>
+<li> Movie Title: {{ movie.movieName }}</li>
+<li> Movie Category: {{ categoryNames[movie.movie_id] }}</li>
+<li> Release Date: {{ movie.releaseDate | date('Y-m-d') }}</li>
+<li> Details: {{ movie.movieDetails }}</li>
+ </ul>
+
+
+ <!-- Form for adding new comments and reviews -->
+                <form method="POST" action="{{ path('add_comment_review', {'movieId': movie.movie_id}) }}">
+                    
+                    
+                    <label for="comment">Enter your comment:</label><br>
+                    <textarea id="comment" name="comment" rows="4" cols="50"></textarea>                   
+                    <h4>Add a review:</h4>
+                    <input type="radio" id="star_1" name="review" value="1 star">
+                    <label for="reviewPositive">1</label>
+                    <input type="radio" id="star_2" name="review" value="2 star">
+                    <label for="reviewNeutral">2</label>
+                    <input type="radio" id="star_3" name="review" value="3 star">
+                    <label for="reviewNegative">3</label>
+                    <input type="radio" id="star_4" name="review" value="4 star">
+                    <label for="reviewNegative">4</label>
+                    <input type="radio" id="star_5" name="review" value="5 star">
+                    <label for="reviewNegative">5</label><br><br>
+                    <br>
+                    <input type="hidden" name="user_id" value="{{ userId }}">
+
+                    <button type="submit">Submit</button><br><br>
+                </form>
+
+    {# <table class="table">
+        <thead>
+            <tr>
+                <th>Movie ID</th>
+                <th>Movie Name</th>
+                <th>Category</th>
+                <th>Release Date</th>
+                <th>Movie Image</th>
+                <th>Movie Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in movies %}
+                <tr>
+                    <td>{{ movie.movie_id }}</td>
+                    <td>{{ movie.movieName }}</td>
+                    <td>{{ categoryNames[movie.movie_id] }}</td>
+                    <td>{{ movie.releaseDate | date('Y-m-d') }}</td>
+                    <td><img src="{{ asset('assets/images/kushi.jpg') }}" alt="{{ movie.movieImage }}" width="50px"></td>
+                    <td>{{ movie.movieDetails }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table> #}
+ </div>
+{% endfor %}
+ {% endblock %}

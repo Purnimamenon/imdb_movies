@@ -1,0 +1,114 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Movies{% endblock %}
+
+{% block body %}
+    <h1>Movies</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Movie Name</th>
+                <th>Category</th>
+                <th>Director</th>
+                <th>Release Date</th>
+                <th>Movie Image</th>
+                <th>Movie Details</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {# {{ dump(movieCategories) }} #}
+            {% for movie in movies %}
+                <tr>
+                    <td>{{ movie.movie_id }}</td>
+                    <td>{{ movie.movieName }}</td>
+                    {# <td>{{ movieCategories[movie.catgory_id] }}</td> #}
+                    {# {{ dump(movieCategories) }} #}
+              
+                    <td>{{ categoryNames[movie.movie_id]  }}</td>
+
+                    <td>{{ directorNames[movie.movie_id]  }}</td>
+
+                
+                    <td>{{ movie.releaseDate | date('Y-m-d') }}</td>
+                    <td>
+                    <img src="{{ asset('assets/images/kushi.jpg') }}" alt="{{ movie.movieImage }}" width="50px">
+                    </td>
+                    <td>{{ movie.movieDetails }}</td>
+                    <td>
+                       <a href="{{ path('app_movie_show', {'id': movie.movie_id}) }}" class="btn btn-primary">View Details</a> 
+                       <a href="{{ path('app_movie_edit', {'id': movie.movie_id}) }}" class="btn btn-warning">Edit</a>
+                       <a href="{{ path('app_movie_delete', {'id': movie.movie_id}) }}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_movie_create') }}" class="btn btn-success">Create New Movie</a>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Hello MovieController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ '/home/codilar/Desktop/movie_rating/movies_imdb/src/Controller/MovieController.php'|file_link(0) }}">src/Controller/MovieController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/home/codilar/Desktop/movie_rating/movies_imdb/templates/movie/index.html.twig'|file_link(0) }}">templates/movie/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %} #}

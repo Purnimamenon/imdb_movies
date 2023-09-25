@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="main">
+<div id="img">
+<img src="{{ asset('images/imdb_logo.png') }}" alt="Imdb_Movies">
+</div>
+<div class="form">
+{% for message in app.flashes('notice') %}
+    <div class="flash-notice" style="color:red;">
+        {{ message }}
+    </div>
+{% endfor %}
+
+  <h3>Create account</h3>
+<div>
+<form method="post">
+    {{ form_widget(form) }}
+    <center><button type="submit">Create your ImDb account</button></center>
+
+    <br>
+    <br>
+</div>
+<center>
+<a href="{{ url('login') }}">
+<button type="button" style="background-color:white;">Sign in</button>
+</a>
+</center>
+</form>
+
+
+ {% endblock %}
