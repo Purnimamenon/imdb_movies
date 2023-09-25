@@ -1,0 +1,31 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+  
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Movie</th>
+                <th>Commented User</th>
+                <th>Comment</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for commentReview in commentReviews %}
+                <tr>
+                    {# <td>{{ commentReview.movie.movie_id }}</td> #}
+                   <td> {{ movieNames[commentReview.movieId]  }}</td>
+                   <td> {{ userNames[commentReview.userId]  }}</td>
+                    <td>{{ commentReview.comments }}</td>
+                    <td>{{ commentReview.ratings }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

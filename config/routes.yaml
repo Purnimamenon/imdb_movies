@@ -80,6 +80,10 @@ director_delete:
     path: /director/delete/{id}
     controller: App\Controller\DirectorController::delete
 
+view_comment_reviews:
+    path: /view_comments_reviews
+    controller: App\Controller\CommentRatingsController::viewCommentsReviews
+
 logout:
     path: /logout
     controller: App\Controller\RegisterController::logout

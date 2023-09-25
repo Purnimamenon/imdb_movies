@@ -193,7 +193,6 @@ public function delete(int $id, EntityManagerInterface $entityManager): Response
  public function addCommentReview(Request $request, $movieId)
  {
     
-    // Retrieve the selected movie using the $movieId parameter
     $movie = $this->entityManager->getRepository(Imdbmovies::class)->find($movieId);
     $movies = $this->entityManager->getRepository(Imdbmovies::class)->findAll();
 
@@ -205,9 +204,7 @@ public function delete(int $id, EntityManagerInterface $entityManager): Response
         $category = $this->entityManager->getRepository(Category::class)->findOneBy(['id' => $categoryId]);
         
         $categoryName = $category ? $category->getCategoryname() : '';
-        // echo "sdasd";
-        // print_r($categoryName);
-        // die;
+
         $categoryNames[$movie->getmovie_Id()] = $categoryName;
       }
 
@@ -215,31 +212,19 @@ public function delete(int $id, EntityManagerInterface $entityManager): Response
         throw $this->createNotFoundException('The movie with id ' . $movieId . ' does not exist.');
     }
 
-    // Handle the form submission
     $comment = $request->request->get('comment');
     $rating = $request->request->get('review');
     $user_id = $request->request->get('user_id');
 
-    // print_r($comment);
-    // print_r($rating);
-    // print_r($user_id);
-
-    // die;
-    // Create a new CommentReview entity
     $commentReview = new Commentreview();
     $commentReview->setComments($comment);
     $commentReview->setRatings($rating);
     $commentReview->setMovieId($movieId);
     $commentReview->setUserId($user_id);
 
-        // print_r($commentReview);
-        // die;
-    // Persist the comment and review to the database
     $this->entityManager->persist($commentReview);
     $this->entityManager->flush();
 
-    // Redirect to a success page or return a response as needed
-    // For example, you can redirect back to the movie details page
     return $this->redirectToRoute('user_dashboard', ['userId' => $user_id]);
 }
 
